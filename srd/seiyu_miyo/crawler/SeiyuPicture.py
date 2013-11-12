@@ -8,10 +8,12 @@ class SeiyuPicture(object):
             self.imageurl = dict["imageUrl"]
             self.blogurl = dict["blogUrl"]
             self.seiyuname = dict["seiyuName"]
+            self.timeSmap = dict["timeSmap"]
+            self.index = dict["index"]
         else:
             self.blogurl = souptag.find("p").find("a").get("href")
             self.imageurl = souptag.find("img").get("src")
 
 
     def getDict(self):
-        return {"prefix":self.prefix,"imageUrl":self.imageurl,"blogUrl":self.blogurl,"seiyuName":self.seiyuname}
+        return {"prefix":self.prefix,"imageUrl":self.imageurl,"blogUrl":self.blogurl,"seiyuName":self.seiyuname, "timeSmap":self.timeSmap, "index":self.index}

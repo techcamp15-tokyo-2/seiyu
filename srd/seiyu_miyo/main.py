@@ -33,12 +33,13 @@ class Application(tornado.web.Application):
             # urlとclassのmapping
             (r"/login", Login),
             (r"/register", Register),
-            (r"/findPwd", FindPwd)
+            (r"/findPwd", FindPwd),
+            (r"/latestFeed", LatestFeed)
         ]
 
         tornado.web.Application.__init__(self, handlers, **setting)
         #mongo db init
-        self.db = pymongo.Connection()
+        self.db = pymongo.Connection().test
 
 
 def main():

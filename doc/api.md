@@ -6,6 +6,7 @@
 	* email : string
 	* pwd :string
 	* gender : int
+	* nick : string
 	* tag : [string,]
 	* followed : [string,]
 * seiyu
@@ -28,12 +29,14 @@
 		state : string,
 		message : string,
 		email : string,
-		name : string
+		name : string,
+		gender : string
+		tag : string (,分割)
 			}
 
 * /register
 	* in
-		* ?email=string&pwd=string&uid=string
+		* ?email=string&pwd=string&uid=string&name=string&gender=string(0/1)
 	* out
 		* {
 		state : string,
@@ -46,11 +49,15 @@
 	* in
 		* ?uid=string&email=string
 	* out
-		* None
+		* {
+		state : string,
+		message : string,
+		url : string
+		}
 
 * /latestFeed
 	* in
-		* ?uid=string
+		* ?uid=string&page=1,2,3,4
 	* out
 		* {
 		state : string,
@@ -65,7 +72,7 @@
 
 * /favourite
 	* in
-		* ?uid = string
+		* ?uid = string&page=
 	* out
 		* {
 		state : string,
@@ -80,7 +87,7 @@
 
 * /search
 	* in
-		* ?uid=string&keyword=string
+		* ?uid=string&keyword=string&page=
 	* out
 		* {
 		state : string,

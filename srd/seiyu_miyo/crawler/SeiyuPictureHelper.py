@@ -9,6 +9,7 @@ import pymongo
 import sys
 from time import gmtime, strftime ,sleep
 from SeiyuPicture import SeiyuPicture
+import re
 
 class SeiyuPictureHelper(Singleton):
     def __init__(self):
@@ -17,6 +18,7 @@ class SeiyuPictureHelper(Singleton):
 
     def updateSeiyuPictureInfo(self, seiyuName):
         mdbIn = self.db.seiyu.find_one({"seiyuName": seiyuName})
+        httpRe = re.compile('http://\S+/\S+/')
         if mdbIn:
             if "latestCrawlerTime" in mdbIn.keys():
                 # crawled data need Update
@@ -30,7 +32,7 @@ class SeiyuPictureHelper(Singleton):
                         realMonth = 12
                     for j in xrange(oldmonth, realMonth + 1):
                         url = mdbIn["prefix"] + "imagelist-" + str(i) + str(j).zfill(2) + ".html"
-                        print url
+                        #print url
                         html = ""
                         try:
                             html = urllib2.urlopen(url).read()
@@ -47,11 +49,15 @@ class SeiyuPictureHelper(Singleton):
                         soup = BeautifulSoup(html)
                         imgBoxList = soup.find(id="imgList")
                         if imgBoxList:
-                            for k in imgBoxList.findAll("li", {"class": "imgBox"}):
-                                pic = SeiyuPicture(k)
+                            allImgList = imgBoxList.findAll("li", {"class": "imgBox"})
+                            for k in xrange(0 , len(allImgList)):
+                                pic = SeiyuPicture(allImgList[k])
                                 pic.seiyuname = seiyuName
                                 pic.prefix = mdbIn["prefix"]
-                                mdbPic = self.db.seiyuPicture.find_one({"imageUrl": pic.imageurl})
+                                pic.index = str(k)
+                                pic.timeSmap = str(i) + str(j).zfill(2)
+
+                                mdbPic = self.db.seiyuPicture.find_one({"blogUrl": {'$regex': pic.prefix[0:9]+"e*" + pic.prefix[9:] + "*"}, "timeSmap": pic.timeSmap, "index": pic.index})
                                 if mdbPic:
                                     print "update picture %s" % pic.imageurl
                                     self.db.seiyuPicture.update({"_id": mdbPic["_id"]}, pic.getDict())
@@ -68,7 +74,7 @@ class SeiyuPictureHelper(Singleton):
                 for i in xrange(newyear, 1900, -1):
                     for j in xrange(1, 13):
                         url = mdbIn["prefix"] + "imagelist-" + str(i) + str(j).zfill(2) + ".html"
-                        print url
+                        #print url
                         html = ""
                         try:
                             html = urllib2.urlopen(url).read()
@@ -86,11 +92,14 @@ class SeiyuPictureHelper(Singleton):
                         soup = BeautifulSoup(html)
                         imgBoxList = soup.find(id="imgList")
                         if imgBoxList:
-                            for k in imgBoxList.findAll("li", {"class": "imgBox"}):
-                                pic = SeiyuPicture(k)
+                            allImgList = imgBoxList.findAll("li", {"class": "imgBox"})
+                            for k in xrange(0, len(allImgList)):
+                                pic = SeiyuPicture(allImgList[k])
                                 pic.seiyuname = seiyuName
                                 pic.prefix = mdbIn["prefix"]
-                                mdbPic = self.db.seiyuPicture.find_one({"imageUrl": pic.imageurl})
+                                pic.index = str(k)
+                                pic.timeSmap = str(i) + str(j).zfill(2)
+                                mdbPic = self.db.seiyuPicture.find_one({"blogUrl": {'$regex': pic.prefix[0:9]+"e*" + pic.prefix[9:] + "*"}, "timeSmap": pic.timeSmap, "index": pic.index})
                                 if mdbPic:
                                     print "update picture %s" % pic.imageurl
                                     self.db.seiyuPicture.update({"_id": mdbPic["_id"]}, pic.getDict())
@@ -112,7 +121,12 @@ class SeiyuPictureHelper(Singleton):
 
 
     def updateSeiyuAllPictureInfo(self):
+        #count = 0
         for i in self.db.seiyu.find():
+        #    count += 1
+        #    if count > 1:
+        #        break
             self.updateSeiyuPictureInfo(i["seiyuName"])
+        #self.updateSeiyuPictureInfo(u"浅野真澄")
 
 SeiyuPictureHelper().updateSeiyuAllPictureInfo()
