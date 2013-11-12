@@ -58,7 +58,8 @@
 		imageList : [
 		{imageUrl : string,
 		seiyuName : string,
-		seiyuId : string
+		seiyuId : string,
+		timeSmap : int
 		},
 		]}
 
@@ -72,7 +73,8 @@
 		imageList : [
 		{imageUrl : string,
 		seiyuName : string,
-		seiyuId : string
+		seiyuId : string,
+		timeSmap : int
 		},
 		]}
 
@@ -86,7 +88,8 @@
 		imageList : [
 		{imageUrl : string,
 		seiyuName : string,
-		seiyuId : string
+		seiyuId : string,
+		timeSmap : int
 		},
 		]}
 
