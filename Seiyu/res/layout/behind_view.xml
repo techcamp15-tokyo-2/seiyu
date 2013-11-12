@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="307dp"
+        android:layout_height="fill_parent"
+        android:background="@android:color/black" >
+
+        <LinearLayout
+            android:layout_width="307dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/myPage"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_group_bg"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="2dp"
+                android:text="マイページ"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="307dp"
+                android:layout_height="60dp"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="15dp"
+                android:text="楊旭　様"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/home"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_group_bg"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="2dp"
+                android:text="ホーム"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/photo"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="最新の写真"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/like"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="マイ好き"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/search"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="検索"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/recommend"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="おすすめ"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            
+            <TextView
+                android:id="@+id/set"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_group_bg"
+                android:paddingBottom="2dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="2dp"
+                android:text="設定"
+                android:textColor="#FFFFFF" />
+
+            <RelativeLayout 
+                android:id="@+id/news"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="お知らせ"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+            
+</RelativeLayout>
+            <TextView
+                android:id="@+id/setting"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="設定"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/help"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="ヘルプ"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/friends"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="友達に紹介"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/review"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="レビュー掲載"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/app"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="おすすめアプリ"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/desktop_list_item_bg"
+                android:clickable="true"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="お問い合わせ"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
