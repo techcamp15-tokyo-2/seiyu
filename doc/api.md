@@ -18,7 +18,7 @@
 	* imageUrl : string
 	* blogUrl : string
 	* blogName : string
-
+	* latestCrawlerTime : string
 ###Interface
 * /login
 	* in 
