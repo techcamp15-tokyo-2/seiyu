@@ -19,7 +19,7 @@ import pymongo
 
 from Handler import *
 
-define("port", default=8888, help="tornado will run on this port", type=int)
+define("port", default=8889, help="tornado will run on this port", type=int)
 
 
 class Application(tornado.web.Application):
