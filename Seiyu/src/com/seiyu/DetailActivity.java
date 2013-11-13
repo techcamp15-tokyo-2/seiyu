@@ -15,54 +15,33 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.seiyu.adapter.FeedAdapter;
 import com.seiyu.modal.FeedItem;
 
-public class MainActivity extends Activity {
+public class DetailActivity extends Activity{
 
-	private SlidingMenu menu = null;
-	private ImageView menuButton = null;
-	private TextView title_text, photo = null;
 	private GridView feedGridView = null;
 	private FeedAdapter adapter = null;
 	private List<FeedItem> items = new ArrayList<FeedItem>();
-
+	private TextView blog = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.main);
-		configureMenu();
+		setContentView(R.layout.detail);
 		init_ui();
 		set_listner();
 	}
-
-	/**
-	 * configure the SlidingMenu
-	 * */
-	private void configureMenu() {
-		menu = new SlidingMenu(this);
-		menu.setMode(SlidingMenu.LEFT);
-		menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
-		menu.setShadowWidth(50);
-		menu.setBehindOffset(110);
-		menu.setFadeDegree(0.35f);
-		menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-		menu.setMenu(R.layout.behind_view);
-	}
-
+	
 	private void init_ui() {
-		menuButton = (ImageView) findViewById(R.id.newsfeed_flip);
-		title_text = (TextView) findViewById(R.id.title_text);
-		photo = (TextView) findViewById(R.id.photo);
-		title_text.setText(photo.getText().toString().trim());
+		blog = (TextView)findViewById(R.id.blog);
 		feedGridView = (GridView) findViewById(R.id.gridView);
-		adapter = new FeedAdapter(items, MainActivity.this);
+		adapter = new FeedAdapter(items, DetailActivity.this);
 		FeedItem item1 = new FeedItem();
 		FeedItem item2 = new FeedItem();
 		FeedItem item3 = new FeedItem();
@@ -74,24 +53,18 @@ public class MainActivity extends Activity {
 		items.add(item4);
 		items.add(item5);
 		feedGridView.setAdapter(adapter);
-		
 	}
 
 	private void set_listner() {
-		menuButton.setOnClickListener(new OnClickListener() {
-
+		blog.setOnClickListener(new OnClickListener() {
+			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				menu.toggle();
-			}
-		});
-		photo.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				title_text.setText(photo.getText().toString().trim());
+				Intent intent = new Intent();
+				intent.setClass(DetailActivity.this, BlogActivity.class);
+				DetailActivity.this.startActivity(intent);
+				overridePendingTransition(R.anim.in_from_right, R.anim.out);
 			}
 		});
 		feedGridView.setOnScrollListener(new OnScrollListener() {
@@ -118,7 +91,8 @@ public class MainActivity extends Activity {
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem,
 					int visibleItemCount, int totalItemCount) {
-
+				// TODO Auto-generated method stub
+				
 			}
 		});
 		feedGridView.setOnItemClickListener(new OnItemClickListener() {
@@ -126,24 +100,12 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-//				if(isNetworkAvailable(MainActivity.this)==false && isWiFiActive(MainActivity.this)==false){
-//					Toast.makeText(MainActivity.this, "ネットワーク接続できませんでした。\n電波の良いところで再度お試しください。", Toast.LENGTH_SHORT).show();
-//				}else{
-//					RelateItem relateItem = (RelateItem) relateGridView
-//							.getItemAtPosition(position);
-//					Intent intent = new Intent();
-//					intent.setClass(MainActivity.this, KouzaActivity.class);
-//					intent.putExtra("url", relateItem.getUrl());
-//					MainActivity.this.startActivity(intent);
-//					overridePendingTransition(R.anim.in_from_right, R.anim.out);
-//				}
-				Intent intent = new Intent();
-				intent.setClass(MainActivity.this, DetailActivity.class);
-				MainActivity.this.startActivity(intent);
-				overridePendingTransition(R.anim.in_from_right, R.anim.out);
-				finish();
+//				Intent intent = new Intent();
+//				intent.setClass(DetailActivity.this, DetailActivity.class);
+//				MainActivity.this.startActivity(intent);
+//				overridePendingTransition(R.anim.in_from_right, R.anim.out);
+//				finish();
 			}
 		});
 	}
-
 }
