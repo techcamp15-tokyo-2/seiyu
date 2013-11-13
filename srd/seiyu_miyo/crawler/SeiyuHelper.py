@@ -6,7 +6,7 @@ import urllib2
 from BeautifulSoup import *
 import pymongo
 import sys
-
+from SeiyuPictureHelper import *
 class SeiyuHelper(object):
     _instance = ''
     @classmethod
@@ -28,8 +28,10 @@ class SeiyuHelper(object):
                 seiyu = Seiyu(j).getDict()
                 mdbIn = self.db.seiyu.find_one({"seiyuName": seiyu["seiyuName"]})
                 if mdbIn:
-                    sys.stdout.write("update seiyu Info %s\n" % seiyu["seiyuName"])
-                    self.db.seiyu.update({"_id": mdbIn["_id"]}, seiyu)
+                    #sys.stdout.write("update seiyu Info %s\n" % seiyu["seiyuName"])
+                    #self.db.seiyu.update({"_id": mdbIn["_id"]}, seiyu)
+                    pass
                 else:
                     sys.stdout.write("insert seiyu Info %s\n" % seiyu["seiyuName"])
                     self.db.seiyu.insert(seiyu)
+                    SeiyuPictureHelper.instance().updateSeiyuPictureInfo(seiyu["seiyuName"])

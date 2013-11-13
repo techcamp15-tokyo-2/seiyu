@@ -14,6 +14,7 @@ from tornado.options import define, options
 # component of python
 
 import os
+import thread
 # mongodbとpythonのミドルウェア
 import pymongo
 
@@ -56,5 +57,15 @@ def main():
     tornado.ioloop.IOLoop.instance().start()
 
 
+def crawler():
+    while 1:
+        print "crawler awake"
+        SeiyuFeedHelper.instance().updateFeedInfo()
+        SeiyuHelper.instance().updateSeiyuInfo()
+        SeiyuPictureHelper.instance().updateSeiyuAllPictureInfo()
+        sleep(60*30)
+
+
 if __name__ == "__main__":
     main()
+    thread.start_new_thread(crawler, ())

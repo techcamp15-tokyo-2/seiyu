@@ -41,11 +41,15 @@ class SeiyuPictureHelper(object):
                         url = mdbIn["prefix"] + "imagelist-" + str(i) + str(j).zfill(2) + ".html"
                         #print url
                         html = ""
+                        tryCount = 0
                         try:
                             html = urllib2.urlopen(url).read()
                         except urllib2.HTTPError, err:
                             if err.code == 500:
                                 sleep(2)
+                                tryCount += 1
+                                if tryCount > 20:
+                                    continue
                                 html = urllib2.urlopen(url).read()
                             else:
                                 pass
@@ -83,12 +87,16 @@ class SeiyuPictureHelper(object):
                         url = mdbIn["prefix"] + "imagelist-" + str(i) + str(j).zfill(2) + ".html"
                         #print url
                         html = ""
+                        tryCount = 0
                         try:
                             html = urllib2.urlopen(url).read()
                         except urllib2.HTTPError, err:
                             print err
                             if err.code == 500:
                                 sleep(2)
+                                tryCount += 1
+                                if tryCount > 20:
+                                    continue
                                 html = urllib2.urlopen(url).read()
                             else:
                                 noData = True
@@ -128,12 +136,5 @@ class SeiyuPictureHelper(object):
 
 
     def updateSeiyuAllPictureInfo(self):
-        #count = 0
         for i in self.db.seiyu.find():
-        #    count += 1
-        #    if count > 1:
-        #        break
             self.updateSeiyuPictureInfo(i["seiyuName"])
-        #self.updateSeiyuPictureInfo(u"浅野真澄")
-
-#SeiyuPictureHelper().updateSeiyuAllPictureInfo()

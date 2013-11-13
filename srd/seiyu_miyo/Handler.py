@@ -93,6 +93,8 @@ class LatestFeed(BaseHandler):
             state = "success"
             for i in tmpList:
                 curous = self.db.seiyuPicture.find({"seiyuName": i}).sort("index").sort("timeSmap", DESCENDING).limit(1)
+                if curous.count() == 0:
+                    continue
                 tempDict = curous.next()
                 tempDict["seiyuId"] = self.db.seiyu.find_one({"seiyuName": i})["_id"].__str__()
                 feedList.append(tempDict)
@@ -121,6 +123,8 @@ class Favourite(BaseHandler):
             for i in tmpList:
                 seiyuName = self.db.seiyu.find_one({"_id": ObjectId(i)})["seiyuName"]
                 curous = self.db.seiyuPicture.find({"seiyuName": seiyuName}).sort("index").sort("timeSmap", DESCENDING).limit(1)
+                if curous.count() == 0:
+                    continue
                 tempDict = curous.next()
                 tempDict["seiyuId"] = i
                 favList.append(tempDict)
@@ -256,7 +260,10 @@ class Recommend(BaseHandler):
                 followed = self.db.user.find_one({"uid": userId})["followed"]
                 for j in followed:
                     seiyuName = self.db.seiyu.find_one({"_id": ObjectId(j)})["seiyuName"]
-                    tempDict = self.db.seiyuPicture.find({"seiyuName": seiyuName}).sort("index").sort("timeSmap", DESCENDING).limit(1).next()
+                    curous = self.db.seiyuPicture.find({"seiyuName": seiyuName}).sort("index").sort("timeSmap", DESCENDING).limit(1)
+                    if curous.count() == 0:
+                        continue
+                    tempDict = curous.next()
                     tempDict["seiyuId"] = tempDict["_id"].__str__()
                     imageList.append(tempDict)
                 infoList.append({"userId": userId, "userName": userName, "imageList": imageList})
