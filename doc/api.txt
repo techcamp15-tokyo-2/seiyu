@@ -59,7 +59,7 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : int
+		timeSmap : string
 		},
 		]}
 
@@ -74,7 +74,7 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : int
+		timeSmap : string
 		},
 		]}
 
@@ -89,7 +89,7 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : int
+		timeSmap : string
 		},
 		]}
 
@@ -107,7 +107,7 @@
 		blogList : [{
 			blogName : string,
 			blogUrl : string,
-			timeSmap : int
+			timeSmap : string
 		},]
 		}
 

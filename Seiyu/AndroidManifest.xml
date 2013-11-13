@@ -15,11 +15,36 @@
         <activity
             android:name="com.seiyu.MainActivity"
             android:label="@string/app_name" >
+           
+        </activity>
+        <activity
+            android:name="com.seiyu.LoginActivity"
+            android:label="@string/app_name" >
+            
+        </activity>
+        <activity
+            android:name="com.seiyu.RegistAvtivity"
+            android:label="@string/app_name" >
+             
+        </activity>
+        <activity
+            android:name="com.seiyu.FirstActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.seiyu.DetailActivity"
+            android:label="@string/app_name" >
+             
+        </activity>
+        <activity
+            android:name="com.seiyu.BlogActivity"
+            android:label="@string/app_name" >
+             
         </activity>
     </application>
 
