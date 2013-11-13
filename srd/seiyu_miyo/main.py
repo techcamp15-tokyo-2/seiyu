@@ -34,7 +34,14 @@ class Application(tornado.web.Application):
             (r"/login", Login),
             (r"/register", Register),
             (r"/findPwd", FindPwd),
-            (r"/latestFeed", LatestFeed)
+            (r"/latestFeed", LatestFeed),
+            (r"/favourite", Favourite),
+            (r"/search", Search),
+            (r"/imageDetail", ImageDetail),
+            (r"/blogDetail", BlogDetail),
+            (r"/action", Action),
+            (r"/recommend", Recommend),
+            (r"/editInfo", EditInfo)
         ]
 
         tornado.web.Application.__init__(self, handlers, **setting)

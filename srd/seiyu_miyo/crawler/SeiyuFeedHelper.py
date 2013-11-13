@@ -1,12 +1,21 @@
+from crawler import Singleton
+
 __author__ = 'zhangxinzheng'
 
 import urllib2
-import BeautifulSoup
-import Singleton
+from BeautifulSoup import *
 from time import sleep
 
-class SeiyuFeedHelper(Singleton):
-    def __init__(self):
+class SeiyuFeedHelper(object):
+    _instance = ''
+    @classmethod
+    def instance(cls):
+        if not cls._instance:
+            cls._instance = cls()
+            cls._instance.start()
+        return cls._instance
+
+    def start(self):
         self.feedList = []
         if len(self.feedList) == 0:
             self.updateFeedInfo()

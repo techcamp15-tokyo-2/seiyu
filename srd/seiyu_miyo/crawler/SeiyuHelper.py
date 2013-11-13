@@ -1,16 +1,23 @@
+from Seiyu import *
+
 __author__ = 'zhangxinzheng'
 
 import urllib2
 from BeautifulSoup import *
-from Seiyu import Seiyu
-from Singleton import Singleton
 import pymongo
 import sys
 
-class SeiyuHelper(Singleton):
-    def __init__(self):
-        self.db = pymongo.Connection().test
+class SeiyuHelper(object):
+    _instance = ''
+    @classmethod
+    def instance(cls):
+        if not cls._instance:
+            cls._instance = cls()
+            cls._instance.start()
+        return cls._instance
 
+    def start(self):
+        self.db = pymongo.Connection().test
 
     def updateSeiyuInfo(self):
         seiyuUrl = ["http://official.ameba.jp/genrekana/kana22-"+str(i)+".html" for i in xrange(1, 44)]
@@ -26,5 +33,3 @@ class SeiyuHelper(Singleton):
                 else:
                     sys.stdout.write("insert seiyu Info %s\n" % seiyu["seiyuName"])
                     self.db.seiyu.insert(seiyu)
-
-SeiyuHelper().updateSeiyuInfo()

@@ -100,9 +100,9 @@
 		},
 		]}
 
-* /detail
+* /imageDetail
 	* in
-		* ?uid=string&seiyuId=string
+		* ?uid=string&seiyuId=string&page
 	* out
 		* {
 		state : string,
@@ -110,14 +110,23 @@
 		imageList : [{
 			imageUrl : string,
 			blogUrl : string
-		},],
+		},]
+		}
+
+* /blogDetail
+	* in
+		* ?uid=string&seiyuId=string&page
+	* out
+		* {
+		state : string,
+		message : string,
+
 		blogList : [{
 			blogName : string,
 			blogUrl : string,
 			timeSmap : int
 		},]
 		}
-
 * /action
 	* in
 		* ?uid=string&seiyuId=string&followed=int

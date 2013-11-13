@@ -11,4 +11,4 @@ class BaseHandler(tornado.web.RequestHandler):
 
     @property
     def db(self):
-        return self.application.db.test
+        return self.application.db

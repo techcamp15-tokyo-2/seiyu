@@ -2,19 +2,26 @@ __author__ = 'zhangxinzheng'
 # -*- coding: utf-8 -*-
 
 import urllib2
-from BeautifulSoup import *
-from Seiyu import Seiyu
-from Singleton import Singleton
-import pymongo
-import sys
 from time import gmtime, strftime ,sleep
-from SeiyuPicture import SeiyuPicture
 import re
 
-class SeiyuPictureHelper(Singleton):
-    def __init__(self):
-        self.db = pymongo.Connection().test
+from BeautifulSoup import *
+import pymongo
 
+from SeiyuPicture import SeiyuPicture
+
+
+class SeiyuPictureHelper(object):
+    _instance = ''
+    @classmethod
+    def instance(cls):
+        if not cls._instance:
+            cls._instance = cls()
+            cls._instance.start()
+        return cls._instance
+
+    def start(self):
+        self.db = pymongo.Connection().test
 
     def updateSeiyuPictureInfo(self, seiyuName):
         mdbIn = self.db.seiyu.find_one({"seiyuName": seiyuName})
@@ -129,4 +136,4 @@ class SeiyuPictureHelper(Singleton):
             self.updateSeiyuPictureInfo(i["seiyuName"])
         #self.updateSeiyuPictureInfo(u"浅野真澄")
 
-SeiyuPictureHelper().updateSeiyuAllPictureInfo()
+#SeiyuPictureHelper().updateSeiyuAllPictureInfo()
