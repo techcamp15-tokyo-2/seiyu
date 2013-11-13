@@ -30,6 +30,33 @@
             android:clickable="true"
             android:scaleType="centerInside"
             android:src="@drawable/flipper_head_flip" />
+        <ImageView
+            android:id="@+id/refresh"
+            android:layout_width="54dip"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/newsfeed_flip_bgxml"
+            android:clickable="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/refresh" />
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearfeed"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="fill_vertical|fill_horizontal"
+            android:numColumns="2"
+            android:paddingTop="5dp"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="6dp" />
+    </LinearLayout>
 
 </LinearLayout>

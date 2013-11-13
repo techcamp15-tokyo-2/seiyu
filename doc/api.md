@@ -57,7 +57,7 @@
 
 * /latestFeed
 	* in
-		* ?uid=string&page=1,2,3,4
+		* ?uid=string&page=0,1,2,3,4
 	* out
 		* {
 		state : string,

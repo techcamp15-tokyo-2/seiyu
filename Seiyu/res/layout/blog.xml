@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F0F0F0"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/login_top_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/abs__list_activated_holo"
+            android:gravity="center_vertical" >
+
+            <ImageButton
+                android:id="@+id/img_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/tab_back"
+                android:scaleType="matrix" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="楊　旭のブログ"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <com.seiyu.xListView.XListView
+                android:id="@+id/xListView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleLargeInverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>
