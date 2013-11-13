@@ -36,7 +36,7 @@
 
 * /register
 	* in
-		* ?email=string&pwd=string&uid=string&name=string&gender=string(0/1)
+		* ?email=string&pwd=string&uid=string&name=string&gender=string(0/1)&tag=
 	* out
 		* {
 		state : string,

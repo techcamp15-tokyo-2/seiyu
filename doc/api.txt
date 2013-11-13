@@ -6,6 +6,7 @@
 	* email : string
 	* pwd :string
 	* gender : int
+	* nick : string
 	* tag : [string,]
 	* followed : [string,]
 * seiyu
@@ -18,7 +19,7 @@
 	* imageUrl : string
 	* blogUrl : string
 	* blogName : string
-
+	* latestCrawlerTime : string
 ###Interface
 * /login
 	* in 
@@ -28,12 +29,14 @@
 		state : string,
 		message : string,
 		email : string,
-		name : string
+		name : string,
+		gender : string
+		tag : string (,分割)
 			}
 
 * /register
 	* in
-		* ?email=string&pwd=string&uid=string
+		* ?email=string&pwd=string&uid=string&name=string&gender=string(0/1)&tag=
 	* out
 		* {
 		state : string,
@@ -46,11 +49,15 @@
 	* in
 		* ?uid=string&email=string
 	* out
-		* None
+		* {
+		state : string,
+		message : string,
+		url : string
+		}
 
 * /latestFeed
 	* in
-		* ?uid=string
+		* ?uid=string&page=0,1,2,3,4
 	* out
 		* {
 		state : string,
@@ -59,13 +66,13 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : string
+		timeSmap : int
 		},
 		]}
 
 * /favourite
 	* in
-		* ?uid = string
+		* ?uid = string&page=
 	* out
 		* {
 		state : string,
@@ -74,13 +81,13 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : string
+		timeSmap : int
 		},
 		]}
 
 * /search
 	* in
-		* ?uid=string&keyword=string
+		* ?uid=string&keyword=string&page=
 	* out
 		* {
 		state : string,
@@ -89,13 +96,13 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : string
+		timeSmap : int
 		},
 		]}
 
-* /detail
+* /imageDetail
 	* in
-		* ?uid=string&seiyuId=string
+		* ?uid=string&seiyuId=string&page
 	* out
 		* {
 		state : string,
@@ -103,14 +110,23 @@
 		imageList : [{
 			imageUrl : string,
 			blogUrl : string
-		},],
-		blogList : [{
-			blogName : string,
-			blogUrl : string,
-			timeSmap : string
 		},]
 		}
 
+* /blogDetail
+	* in
+		* ?uid=string&seiyuId=string&page
+	* out
+		* {
+		state : string,
+		message : string,
+
+		blogList : [{
+			blogName : string,
+			blogUrl : string,
+			timeSmap : int
+		},]
+		}
 * /action
 	* in
 		* ?uid=string&seiyuId=string&followed=int
