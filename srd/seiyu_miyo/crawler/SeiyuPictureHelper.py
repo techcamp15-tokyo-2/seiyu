@@ -45,6 +45,7 @@ class SeiyuPictureHelper(object):
                         try:
                             html = urllib2.urlopen(url).read()
                         except urllib2.HTTPError, err:
+                            print err
                             if err.code == 500:
                                 sleep(2)
                                 tryCount += 1

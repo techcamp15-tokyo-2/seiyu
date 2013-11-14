@@ -19,10 +19,10 @@ class Login(BaseHandler):
         message = ""
         tag = ""
         gender = ""
-        user = self.db.user.find_one({"email": email})
+        user = self.db.user.find_one({"uid": uid})
         if user:
             if user["pwd"] == pwd:
-                self.set_secure_cookie("email", uid)
+                self.set_secure_cookie("uid", uid)
                 state = "success"
                 name = user["name"]
                 for tt in user["tag"]:
@@ -58,7 +58,7 @@ class Register(BaseHandler):
             message = "has registered"
         else:
             state = "success"
-            self.set_secure_cookie("email", email)
+            self.set_secure_cookie("uid", uid)
             self.db.user.insert({"email": email, "pwd": pwd, "uid": uid, "name": name, "gender": gender, "tag": tag, "followed": followed})
         returnDict = {"state": state, "message": message, "email": email, "name": name}
         self.write(json.dumps(returnDict))
@@ -199,6 +199,7 @@ class ImageDetail(BaseHandler):
         curous = self.db.seiyuPicture.find({"seiyuName": seiyuName}).sort("index").sort("timeSmap").skip(page*10).limit(10)
         for i in curous:
             i["seiyuId"] = seiyuId
+            i["timeSmap"] = i["timeSmap"][0:4] + "-" + i["timeSmap"][4:6] + "-" + i["timeSmap"][6:8]
             imageList.append(i)
         if len(imageList) == 0:
             state = "fail"
@@ -312,33 +313,55 @@ class Recommend(BaseHandler):
                         continue
                     tempDict = curous.next()
                     tempDict["seiyuId"] = j
+                    tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
                     imageList.append(tempDict)
                 infoList.append({"userId": userId, "userName": userName, "imageList": imageList})
         returnDict = {"state": state, "message": message, "infoList": infoList}
         self.write(json.dumps(returnDict, default=json_util.default))
 
 
-class EditInfo(BaseHandler):
+class User(BaseHandler):
     def get(self, *args, **kwargs):
-        state = ""
-        message = ""
-
         uid = self.get_argument("uid")
-        followed = self.get_argument("tags")
-        name = self.get_argument("name")
-        email = self.get_argument("email")
+        ouid = self.get_argument("ouid")
+        selfFollowed = self.db.user.find_one({"uid": uid})["followed"]
+        ouser = self.db.user.find_one({"uid": ouid})
 
-        user = self.db.user.find_one({"uid": uid})
-        if user:
-            _id = user["_id"]
-            user["followed"] = followed.split(",")
-            user["name"] = name
-            user["email"] = email
-            user.pop("_id", None)
-            self.db.user.update({"_id": _id}, user)
-            state = "success"
-        else:
-            state = "fail"
-            message = "invalid user"
-        returnDict = {"state": state, "message": message}
+        state = "success"
+        message = ""
+        seiyuList = []
+        for i in ouser["followed"]:
+            seiyuName = self.db.seiyu.find_one({"_id": ObjectId(i)})["seiyuName"]
+            if i in selfFollowed:
+                followed = "1"
+            else:
+                followed = "0"
+            seiyuList.append({"seiyuId": i, "seiyuName": seiyuName, "followed": followed})
+        returnDict = {"state": state, "message": message, "name": ouser["name"], "email": ouser["email"], "seiyuList":seiyuList}
         self.write(json.dumps(returnDict, default=json_util.default))
+
+
+#class EditInfo(BaseHandler):
+#    def get(self, *args, **kwargs):
+#        state = ""
+#        message = ""
+#
+#        uid = self.get_argument("uid")
+#        followed = self.get_argument("tags")
+#        name = self.get_argument("name")
+#        email = self.get_argument("email")
+#
+#        user = self.db.user.find_one({"uid": uid})
+#        if user:
+#            _id = user["_id"]
+#            user["followed"] = followed.split(",")
+#            user["name"] = name
+#            user["email"] = email
+#            user.pop("_id", None)
+#            self.db.user.update({"_id": _id}, user)
+#            state = "success"
+#        else:
+#            state = "fail"
+#            message = "invalid user"
+#        returnDict = {"state": state, "message": message}
+#        self.write(json.dumps(returnDict, default=json_util.default))

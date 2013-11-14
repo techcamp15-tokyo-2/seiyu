@@ -161,11 +161,19 @@
 			},]
 		}
 		
-* /editInfo
+* /user
 	* in
-		* ?uid=string&tags=(string = string,string,string)string&email=string
+		* ?uid=string&ouid=string
 	* out
 		* {
 			state : string,
-			message : string
+			message : string,
+			name : string,
+			email : string,
+			seiyuList : [{
+				seiyuId : string,
+				seiyuName : string,
+				followed : int
+			},
+			]
 		}
