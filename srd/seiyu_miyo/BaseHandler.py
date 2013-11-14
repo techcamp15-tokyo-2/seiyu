@@ -7,7 +7,7 @@ class BaseHandler(tornado.web.RequestHandler):
         tornado.web.RequestHandler.__init__(self, application, request, **kwargs)
 
     def get_current_user(self):
-        return self.get_secure_cookie("uid")
+        return self.get_secure_cookie("email")
 
     @property
     def db(self):

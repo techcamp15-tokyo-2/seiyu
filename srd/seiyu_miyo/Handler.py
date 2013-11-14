@@ -19,10 +19,10 @@ class Login(BaseHandler):
         message = ""
         tag = ""
         gender = ""
-        user = self.db.user.find_one({"uid": uid})
+        user = self.db.user.find_one({"email": email})
         if user:
             if user["pwd"] == pwd:
-                self.set_secure_cookie("uid", uid)
+                self.set_secure_cookie("email", uid)
                 state = "success"
                 name = user["name"]
                 for tt in user["tag"]:
@@ -30,7 +30,7 @@ class Login(BaseHandler):
                     tag += ","
                 gender = user["gender"]
             else:
-                self.set_secure_cookie("uid", None)
+                self.clear_cookie("email")
                 state = "fail"
                 message = "wrong password"
         else:
@@ -77,6 +77,7 @@ class LatestFeed(BaseHandler):
         message = ""
         feedList = []
 
+        uid = self.get_argument("uid")
         if self.get_argument("page"):
             page = int(self.get_argument("page"))
         else:
@@ -97,6 +98,17 @@ class LatestFeed(BaseHandler):
                     continue
                 tempDict = curous.next()
                 tempDict["seiyuId"] = self.db.seiyu.find_one({"seiyuName": i})["_id"].__str__()
+                followIdList = self.db.user.find_one({"uid": uid})["tag"]
+                followSeiyuList = []
+                for i in followIdList:
+                    sei = self.db.seiyu.find_one({"_id": ObjectId(i)})
+                    if sei:
+                        followSeiyuList.append(sei["seiyuName"])
+                if i in followSeiyuList:
+                    tempDict["followed"] = "1"
+                else:
+                    tempDict["followed"] = "0"
+                tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
                 feedList.append(tempDict)
         returnDict = {"state": state, "message": message, "imageList": feedList}
         self.write(json.dumps(returnDict, default=json_util.default))
@@ -127,6 +139,9 @@ class Favourite(BaseHandler):
                     continue
                 tempDict = curous.next()
                 tempDict["seiyuId"] = i
+                tempDict["followed"] = "1"
+                tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
+
                 favList.append(tempDict)
         returnDict = {"state": state, "message": message, "imageList": favList}
         self.write(json.dumps(returnDict, default=json_util.default))
@@ -139,14 +154,26 @@ class Search(BaseHandler):
         keyword = self.get_argument("keyword")
         searchList = []
 
+        uid = self.get_argument("uid")
         if self.get_argument("page"):
             page = int(self.get_argument("page"))
         else:
             page = 0
         result = self.db.seiyu.find({"seiyuName": {"$regex": keyword}}).skip(page*10).limit(10)
+        followIdList = self.db.user.find_one({"uid": uid})["tag"]
+
         for i in result:
-            i["seiyuId"] = i["_id"].__str__()
-            searchList.append(i)
+            curois = self.db.seiyuPicture.find({"seiyuName": i["seiyuName"]}).sort("index").sort("timeSmap", DESCENDING).limit(1)
+            if curois.count() == 0:
+                continue
+            tempDict = curois.next()
+            tempDict["seiyuId"] = self.db.seiyu.find_one({"seiyuName": i["seiyuName"]})["_id"].__str__()
+            tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
+            if tempDict["seiyuId"] in followIdList:
+                tempDict["follow"] = "1"
+            else:
+                tempDict["follow"] = "0"
+            searchList.append(tempDict)
 
         if len(searchList) == 0:
             state = "fail"
@@ -213,7 +240,7 @@ class Action(BaseHandler):
         if seiyuId and followed in [0, 1] and self.db.seiyu.find_one({"_id": ObjectId(seiyuId)}):
             user = self.db.user.find_one({"uid": uid})
             if user:
-                if followed == 1:
+                if followed == 0:
                     hasFolloed = False
                     for i in user["followed"]:
                         if i == seiyuId:
@@ -221,11 +248,13 @@ class Action(BaseHandler):
                             break
                     if not hasFolloed:
                         user["followed"].append(seiyuId)
+                    message = "1"
                 else:
                     for i in user["followed"]:
                         if i == seiyuId:
                             user["followed"].remove(i)
                             break
+                    message = "0"
                 self.db.user.update({"_id": user["_id"]}, {"$set": {"followed": user["followed"]}})
                 state = "success"
             else:

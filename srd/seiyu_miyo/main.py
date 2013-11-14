@@ -67,5 +67,5 @@ def crawler():
 
 
 if __name__ == "__main__":
+    #thread.start_new_thread(crawler, ())
     main()
-    thread.start_new_thread(crawler, ())

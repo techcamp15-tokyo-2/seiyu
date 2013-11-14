@@ -66,8 +66,12 @@ class SeiyuPictureHelper(object):
                                 pic.seiyuname = seiyuName
                                 pic.prefix = mdbIn["prefix"]
                                 pic.index = str(k)
-                                pic.timeSmap = str(i) + str(j).zfill(2)
-
+                                tempTimeSmap = str(i) + str(j).zfill(2)
+                                completeTimeSmap = re.compile('/' + tempTimeSmap + '\d\d/').findall(pic.imageurl)
+                                if len(completeTimeSmap) !=0 and len(completeTimeSmap[0]) > 2:
+                                    pic.timeSmap = completeTimeSmap[0][1:-1]
+                                else:
+                                    continue
                                 mdbPic = self.db.seiyuPicture.find_one({"blogUrl": {'$regex': pic.prefix[0:9]+"e*" + pic.prefix[9:] + "*"}, "timeSmap": pic.timeSmap, "index": pic.index})
                                 if mdbPic:
                                     print "update picture %s" % pic.imageurl
@@ -113,7 +117,12 @@ class SeiyuPictureHelper(object):
                                 pic.seiyuname = seiyuName
                                 pic.prefix = mdbIn["prefix"]
                                 pic.index = str(k)
-                                pic.timeSmap = str(i) + str(j).zfill(2)
+                                tempTimeSmap = str(i) + str(j).zfill(2)
+                                completeTimeSmap = re.compile('/' + tempTimeSmap + '\d\d/').findall(pic.imageurl)
+                                if len(completeTimeSmap) !=0 and len(completeTimeSmap[0]) > 2:
+                                    pic.timeSmap = completeTimeSmap[0][1:-1]
+                                else:
+                                    continue
                                 mdbPic = self.db.seiyuPicture.find_one({"blogUrl": {'$regex': pic.prefix[0:9]+"e*" + pic.prefix[9:] + "*"}, "timeSmap": pic.timeSmap, "index": pic.index})
                                 if mdbPic:
                                     print "update picture %s" % pic.imageurl

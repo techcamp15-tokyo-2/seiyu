@@ -66,7 +66,9 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : int
+		timeSmap : int,
+		gender : int,
+		follow : int
 		},
 		]}
 
@@ -81,7 +83,9 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : int
+		timeSmap : int,
+		gender : int,
+		follow : int
 		},
 		]}
 
@@ -96,7 +100,9 @@
 		{imageUrl : string,
 		seiyuName : string,
 		seiyuId : string,
-		timeSmap : int
+		timeSmap : int,
+		gender : int,
+		follow : int
 		},
 		]}
 
