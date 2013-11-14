@@ -60,9 +60,10 @@ def main():
 def crawler():
     while 1:
         print "crawler awake"
-        SeiyuFeedHelper.instance().updateFeedInfo()
         SeiyuHelper.instance().updateSeiyuInfo()
         SeiyuPictureHelper.instance().updateSeiyuAllPictureInfo()
+        SeiyuFeedHelper.instance().updateFeedInfo()
+
         sleep(60*30)
 
 

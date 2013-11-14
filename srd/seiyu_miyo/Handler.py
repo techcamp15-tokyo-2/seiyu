@@ -58,7 +58,7 @@ class Register(BaseHandler):
             message = "has registered"
         else:
             state = "success"
-            self.set_secure_cookie("uid", uid)
+            self.set_secure_cookie("email", email)
             self.db.user.insert({"email": email, "pwd": pwd, "uid": uid, "name": name, "gender": gender, "tag": tag, "followed": followed})
         returnDict = {"state": state, "message": message, "email": email, "name": name}
         self.write(json.dumps(returnDict))
@@ -98,16 +98,16 @@ class LatestFeed(BaseHandler):
                     continue
                 tempDict = curous.next()
                 tempDict["seiyuId"] = self.db.seiyu.find_one({"seiyuName": i})["_id"].__str__()
-                followIdList = self.db.user.find_one({"uid": uid})["tag"]
-                followSeiyuList = []
-                for i in followIdList:
-                    sei = self.db.seiyu.find_one({"_id": ObjectId(i)})
-                    if sei:
-                        followSeiyuList.append(sei["seiyuName"])
-                if i in followSeiyuList:
-                    tempDict["followed"] = "1"
-                else:
-                    tempDict["followed"] = "0"
+                #followIdList = self.db.user.find_one({"uid": uid})["tag"]
+                #followSeiyuList = []
+                #for i in followIdList:
+                #    sei = self.db.seiyu.find_one({"_id": ObjectId(i)})
+                #    if sei:
+                #        followSeiyuList.append(sei["seiyuName"])
+                #if i in followSeiyuList:
+                #    tempDict["followed"] = "1"
+                #else:
+                #    tempDict["followed"] = "0"
                 tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
                 feedList.append(tempDict)
         returnDict = {"state": state, "message": message, "imageList": feedList}
@@ -139,7 +139,7 @@ class Favourite(BaseHandler):
                     continue
                 tempDict = curous.next()
                 tempDict["seiyuId"] = i
-                tempDict["followed"] = "1"
+                #tempDict["followed"] = "1"
                 tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
 
                 favList.append(tempDict)
@@ -160,7 +160,7 @@ class Search(BaseHandler):
         else:
             page = 0
         result = self.db.seiyu.find({"seiyuName": {"$regex": keyword}}).skip(page*10).limit(10)
-        followIdList = self.db.user.find_one({"uid": uid})["tag"]
+        #followIdList = self.db.user.find_one({"uid": uid})["tag"]
 
         for i in result:
             curois = self.db.seiyuPicture.find({"seiyuName": i["seiyuName"]}).sort("index").sort("timeSmap", DESCENDING).limit(1)
@@ -169,10 +169,10 @@ class Search(BaseHandler):
             tempDict = curois.next()
             tempDict["seiyuId"] = self.db.seiyu.find_one({"seiyuName": i["seiyuName"]})["_id"].__str__()
             tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
-            if tempDict["seiyuId"] in followIdList:
-                tempDict["follow"] = "1"
-            else:
-                tempDict["follow"] = "0"
+            #if tempDict["seiyuId"] in followIdList:
+            #    tempDict["follow"] = "1"
+            #else:
+            #    tempDict["follow"] = "0"
             searchList.append(tempDict)
 
         if len(searchList) == 0:
@@ -189,6 +189,7 @@ class ImageDetail(BaseHandler):
         state = ""
         message = ""
         imageList = []
+        uid = self.get_argument("uid")
         seiyuId = self.get_argument("seiyuId")
         if self.get_argument("page"):
             page = int(self.get_argument("page"))
@@ -204,7 +205,12 @@ class ImageDetail(BaseHandler):
             message = "no Data"
         else:
             state = "success"
-        returnDict = {"state": state, "message": message, "imageList": imageList}
+        followIdList = self.db.user.find_one({"uid": uid})["followed"]
+        if seiyuId in followIdList:
+            followed = "1"
+        else:
+            followed = "0"
+        returnDict = {"state": state, "message": message, "imageList": imageList, "followed": followed}
         self.write(json.dumps(returnDict, default=json_util.default))
 
 
@@ -272,28 +278,40 @@ class Recommend(BaseHandler):
         message = ""
         infoList = []
         uid = self.get_argument("uid")
-        followed = self.db.user.find_one({"uid", ObjectId(uid)})["followed"]
+        followed = self.db.user.find_one({"uid": uid})["followed"]
         recommendList = []
-        curous = self.db.user.find({"tag": {"$in": followed}})
+        curous = self.db.user.find({"followed": {"$in": followed}, "uid": {"$ne": uid}})
+        #curous = self.db.user.find({"followed": {"$in": followed}})
         for i in curous:
+            i["similar"] = len(set(i["followed"]).intersection(set(followed)))
             recommendList.append(i)
+        recommendList.sort(key=lambda x: x["similar"], reverse=True)
+        recommendList = recommendList[0:10]
         if len(recommendList) == 0:
             state = "fail"
             message = "no similar user found"
         else:
+            state = "success"
             for i in recommendList:
                 userId = i["uid"]
                 userName = i["name"]
                 imageList = []
 
-                followed = self.db.user.find_one({"uid": userId})["followed"]
-                for j in followed:
+                otherfollowed = self.db.user.find_one({"uid": userId})["followed"]
+                difFollowed = set(otherfollowed).difference(set(followed))
+                count = len(difFollowed)
+                seiyuRecommend = []
+                if count > 6:
+                    seiyuRecommend += list(difFollowed[0:6])
+                else:
+                    seiyuRecommend += (list(difFollowed) + otherfollowed[count:6-count])
+                for j in seiyuRecommend:
                     seiyuName = self.db.seiyu.find_one({"_id": ObjectId(j)})["seiyuName"]
                     curous = self.db.seiyuPicture.find({"seiyuName": seiyuName}).sort("index").sort("timeSmap", DESCENDING).limit(1)
                     if curous.count() == 0:
                         continue
                     tempDict = curous.next()
-                    tempDict["seiyuId"] = tempDict["_id"].__str__()
+                    tempDict["seiyuId"] = j
                     imageList.append(tempDict)
                 infoList.append({"userId": userId, "userName": userName, "imageList": imageList})
         returnDict = {"state": state, "message": message, "infoList": infoList}
