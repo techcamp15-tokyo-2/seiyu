@@ -113,6 +113,7 @@
 		* {
 		state : string,
 		message : string,
+		followed : int,
 		imageList : [{
 			imageUrl : string,
 			blogUrl : string
@@ -152,6 +153,7 @@
 				userId : string,
 				userName : string,
 				imageList : [{
+				    timeSmap : string,
 					imageUrl : string,
 					seiyuName : string,
 					seiyuId : string
