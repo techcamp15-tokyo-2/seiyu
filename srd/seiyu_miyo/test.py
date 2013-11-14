@@ -47,7 +47,7 @@ for i in curous:
             gender = "1"
             print 1
         else:
-            print "xxxxxx"
+            gender = "-1"
     else:
         gender = "-1"
     db.update({"_id": i["_id"]}, {"$set": {"gender": gender}})

@@ -97,7 +97,9 @@ class LatestFeed(BaseHandler):
                 if curous.count() == 0:
                     continue
                 tempDict = curous.next()
-                tempDict["seiyuId"] = self.db.seiyu.find_one({"seiyuName": i})["_id"].__str__()
+                seiyu = self.db.seiyu.find_one({"seiyuName": i})
+                tempDict["seiyuId"] = seiyu["_id"].__str__()
+                tempDict["gender"] = seiyu["gender"]
                 #followIdList = self.db.user.find_one({"uid": uid})["tag"]
                 #followSeiyuList = []
                 #for i in followIdList:
@@ -139,6 +141,7 @@ class Favourite(BaseHandler):
                     continue
                 tempDict = curous.next()
                 tempDict["seiyuId"] = i
+                tempDict["gender"] = self.db.seiyu.find_one({"_id": ObjectId(i)})["gender"]
                 #tempDict["followed"] = "1"
                 tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
 
@@ -169,6 +172,7 @@ class Search(BaseHandler):
             tempDict = curois.next()
             tempDict["seiyuId"] = self.db.seiyu.find_one({"seiyuName": i["seiyuName"]})["_id"].__str__()
             tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
+            tempDict["gender"] =  self.db.seiyu.find_one({"seiyuName": i["seiyuName"]})["gender"]
             #if tempDict["seiyuId"] in followIdList:
             #    tempDict["follow"] = "1"
             #else:
@@ -296,6 +300,7 @@ class Recommend(BaseHandler):
             for i in recommendList:
                 userId = i["uid"]
                 userName = i["name"]
+                email = i["email"]
                 imageList = []
 
                 otherfollowed = self.db.user.find_one({"uid": userId})["followed"]
@@ -315,7 +320,7 @@ class Recommend(BaseHandler):
                     tempDict["seiyuId"] = j
                     tempDict["timeSmap"] = tempDict["timeSmap"][0:4] + "-" + tempDict["timeSmap"][4:6] + "-" + tempDict["timeSmap"][6:8]
                     imageList.append(tempDict)
-                infoList.append({"userId": userId, "userName": userName, "imageList": imageList})
+                infoList.append({"userId": userId, "userName": userName, "imageList": imageList, "email": email})
         returnDict = {"state": state, "message": message, "infoList": infoList}
         self.write(json.dumps(returnDict, default=json_util.default))
 

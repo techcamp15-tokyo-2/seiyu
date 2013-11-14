@@ -152,6 +152,7 @@
 			infoList : [{
 				userId : string,
 				userName : string,
+				email : string,
 				imageList : [{
 				    timeSmap : string,
 					imageUrl : string,
