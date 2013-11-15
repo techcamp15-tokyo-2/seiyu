@@ -311,7 +311,8 @@ class Recommend(BaseHandler):
                 if count > 6:
                     seiyuRecommend += list(difFollowed[0:6])
                 else:
-                    seiyuRecommend += (list(difFollowed) + otherfollowed[count:6-count])
+
+                    seiyuRecommend += list(set(list(difFollowed) + otherfollowed))[0:6]
                 for j in seiyuRecommend:
                     seiyuName = self.db.seiyu.find_one({"_id": ObjectId(j)})["seiyuName"]
                     curous = self.db.seiyuPicture.find({"seiyuName": seiyuName}).sort("index").sort("timeSmap", DESCENDING).limit(1)
