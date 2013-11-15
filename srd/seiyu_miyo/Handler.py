@@ -204,6 +204,7 @@ class ImageDetail(BaseHandler):
         for i in curous:
             i["seiyuId"] = seiyuId
             i["timeSmap"] = i["timeSmap"][0:4] + "-" + i["timeSmap"][4:6] + "-" + i["timeSmap"][6:8]
+            i["gender"] = self.db.seiyu.find_one({"_id": ObjectId(seiyuId)})["gender"]
             imageList.append(i)
         if len(imageList) == 0:
             state = "fail"

@@ -60,11 +60,11 @@ def main():
 
 def crawler():
     while 1:
-        print "crawler awake"
-        print "now update Seiyu"
-        SeiyuHelper.instance().updateSeiyuInfo()
-        print "now update picture"
-        SeiyuPictureHelper.instance().updateSeiyuAllPictureInfo()
+        #print "crawler awake"
+        #print "now update Seiyu"
+        #SeiyuHelper.instance().updateSeiyuInfo()
+        #print "now update picture"
+        #SeiyuPictureHelper.instance().updateSeiyuAllPictureInfo()
         print "now update feed"
         SeiyuFeedHelper.instance().updateFeedInfo()
         print "update finish"
@@ -72,5 +72,5 @@ def crawler():
 
 
 if __name__ == "__main__":
-    #thread.start_new_thread(crawler, ())
+    thread.start_new_thread(crawler, ())
     main()
