@@ -51,7 +51,12 @@ class SeiyuHelper(object):
                     pass
                 else:
                     sys.stdout.write("insert seiyu Info %s\n" % seiyu["seiyuName"])
-                    soup = BeautifulSoup(urllib2.urlopen(seiyu["prefix"]).read())
+                    html = ""
+                    try:
+                        html = urllib2.urlopen(seiyu["prefix"]).read()
+                    except urllib2.URLError, err:
+                        print err
+                    soup = BeautifulSoup(html)
                     profile = soup.find(id="new_profile")
                     if not profile:
                         gender = "-1"

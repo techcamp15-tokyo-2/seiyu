@@ -200,7 +200,7 @@ class ImageDetail(BaseHandler):
         else:
             page = 0
         seiyuName = self.db.seiyu.find_one({"_id": ObjectId(seiyuId)})["seiyuName"]
-        curous = self.db.seiyuPicture.find({"seiyuName": seiyuName}).sort("index").sort("timeSmap").skip(page*10).limit(10)
+        curous = self.db.seiyuPicture.find({"seiyuName": seiyuName}).sort("index").sort("timeSmap",DESCENDING).skip(page*10).limit(10)
         for i in curous:
             i["seiyuId"] = seiyuId
             i["timeSmap"] = i["timeSmap"][0:4] + "-" + i["timeSmap"][4:6] + "-" + i["timeSmap"][6:8]
@@ -337,11 +337,12 @@ class User(BaseHandler):
         seiyuList = []
         for i in ouser["followed"]:
             seiyuName = self.db.seiyu.find_one({"_id": ObjectId(i)})["seiyuName"]
+            gender = self.db.seiyu.find_one({"_id": ObjectId(i)})["gender"]
             if i in selfFollowed:
                 followed = "1"
             else:
                 followed = "0"
-            seiyuList.append({"seiyuId": i, "seiyuName": seiyuName, "followed": followed})
+            seiyuList.append({"seiyuId": i, "seiyuName": seiyuName, "followed": followed, "gender": gender})
         returnDict = {"state": state, "message": message, "name": ouser["name"], "email": ouser["email"], "seiyuList":seiyuList}
         self.write(json.dumps(returnDict, default=json_util.default))
 

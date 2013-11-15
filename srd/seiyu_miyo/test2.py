@@ -1,6 +1,7 @@
 __author__ = 'zhangxinzheng'
-import pymongo
-db = pymongo.Connection().test.seiyu
+# -*- coding: utf-8 -*-
 
-for i in db.find():
-    print i["seiyuName"]
+import pymongo
+db = pymongo.Connection().test.seiyuPicture
+
+print db.find().count()

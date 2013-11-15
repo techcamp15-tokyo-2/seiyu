@@ -16,8 +16,8 @@
     <SUITE FILE_PATH="coverage/seiyu_miyo$seiyu_name.coverage" NAME="seiyu_name Coverage Results" MODIFIED="1384263025676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
     <SUITE FILE_PATH="coverage/seiyu_miyo$test.coverage" NAME="test Coverage Results" MODIFIED="1384434870870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
     <SUITE FILE_PATH="coverage/seiyu_miyo$SeiyuPictureHelper.coverage" NAME="SeiyuPictureHelper Coverage Results" MODIFIED="1384350144259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/crawler" />
-    <SUITE FILE_PATH="coverage/seiyu_miyo$main.coverage" NAME="main Coverage Results" MODIFIED="1384435451932" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/seiyu_miyo$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1384427238382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/seiyu_miyo$main.coverage" NAME="main Coverage Results" MODIFIED="1384482569649" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/seiyu_miyo$test2.coverage" NAME="test2 Coverage Results" MODIFIED="1384480020762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -34,7 +34,7 @@
       <file leaf-file-name="main.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="9" selection-start="2010" selection-end="2010" vertical-scroll-proportion="0.8679245" vertical-offset="375" max-vertical-offset="1170">
+            <state line="75" column="10" selection-start="2012" selection-end="2012" vertical-scroll-proportion="0.7597254" vertical-offset="733" max-vertical-offset="1170">
               <folding />
             </state>
           </provider>
@@ -43,7 +43,7 @@
       <file leaf-file-name="Handler.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Handler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="0" selection-start="3200" selection-end="3200" vertical-scroll-proportion="0.0" vertical-offset="1175" max-vertical-offset="5595">
+            <state line="202" column="110" selection-start="7503" selection-end="7544" vertical-scroll-proportion="-46.28" vertical-offset="1798" max-vertical-offset="5610">
               <folding />
             </state>
           </provider>
@@ -61,7 +61,7 @@
       <file leaf-file-name="SeiyuHelper.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/SeiyuHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="44" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1155">
+            <state line="58" column="45" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0" vertical-offset="508" max-vertical-offset="1230">
               <folding />
             </state>
           </provider>
@@ -79,7 +79,7 @@
       <file leaf-file-name="test.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="9" selection-start="1200" selection-end="1200" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="960">
+            <state line="50" column="9" selection-start="1200" selection-end="1200" vertical-scroll-proportion="0.0" vertical-offset="750" max-vertical-offset="1020">
               <folding />
             </state>
           </provider>
@@ -88,7 +88,7 @@
       <file leaf-file-name="test2.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="22" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
+            <state line="6" column="6" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
               <folding />
             </state>
           </provider>
@@ -97,7 +97,7 @@
       <file leaf-file-name="SeiyuPictureHelper.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/SeiyuPictureHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="59" column="36" selection-start="1606" selection-end="2172" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2235">
+            <state line="81" column="56" selection-start="3715" selection-end="3727" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="2235">
               <folding />
             </state>
           </provider>
@@ -106,7 +106,7 @@
       <file leaf-file-name="Seiyu.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/Seiyu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="8" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+            <state line="4" column="8" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="375">
               <folding />
             </state>
           </provider>
@@ -142,9 +142,9 @@
         <option value="$PROJECT_DIR$/crawler/SeiyuBlogHelper.py" />
         <option value="$PROJECT_DIR$/crawler/SeiyuPictureHelper.py" />
         <option value="$PROJECT_DIR$/BaseHandler.py" />
-        <option value="$PROJECT_DIR$/test2.py" />
-        <option value="$PROJECT_DIR$/Handler.py" />
         <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/Handler.py" />
+        <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/crawler/SeiyuHelper.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
@@ -153,8 +153,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="32" />
     <option name="y" value="22" />
-    <option name="width" value="2528" />
-    <option name="height" value="1418" />
+    <option name="width" value="1408" />
+    <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -222,6 +222,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -234,7 +235,7 @@
       <recent name="$PROJECT_DIR$/crawler" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.test2">
     <configuration default="false" name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -494,8 +495,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.main" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test2" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test2" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
         <item index="3" class="java.lang.String" itemvalue="Python.SeiyuPictureHelper" />
         <item index="4" class="java.lang.String" itemvalue="Python.temp" />
       </list>
@@ -511,19 +512,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="32" y="22" width="2528" height="1418" extended-state="6" />
-    <editor active="false" />
+    <frame x="32" y="22" width="1408" height="878" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24841772" sideWeight="0.622071" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24786931" sideWeight="0.6232439" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29885057" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37792894" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37675607" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -565,9 +566,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/crawler/SeiyuPicture.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360">
-          <folding />
-        </state>
+        <state line="4" column="8" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="360" />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Library/Caches/PyCharm30/python_stubs/596071422/__builtin__.py">
@@ -598,37 +597,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crawler/SeiyuFeedHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="76" selection-start="517" selection-end="573" vertical-scroll-proportion="0.0" vertical-offset="291" max-vertical-offset="795">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crawler/Seiyu.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="8" selection-start="60" selection-end="60" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/crawler/SeiyuPictureHelper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="36" selection-start="1606" selection-end="2172" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2235">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="22" selection-start="124" selection-end="124" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Handler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="0" selection-start="3200" selection-end="3200" vertical-scroll-proportion="0.0" vertical-offset="1175" max-vertical-offset="5595">
           <folding />
         </state>
       </provider>
@@ -640,16 +611,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/crawler/SeiyuFeedHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="76" selection-start="517" selection-end="573" vertical-scroll-proportion="0.0" vertical-offset="291" max-vertical-offset="795">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/crawler/SeiyuPictureHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="56" selection-start="3715" selection-end="3727" vertical-scroll-proportion="0.0" vertical-offset="825" max-vertical-offset="2235">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="6" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Handler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="202" column="110" selection-start="7503" selection-end="7544" vertical-scroll-proportion="-46.28" vertical-offset="1798" max-vertical-offset="5610">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/crawler/SeiyuHelper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="44" selection-start="2466" selection-end="2466" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1155">
+        <state line="58" column="45" selection-start="1934" selection-end="1934" vertical-scroll-proportion="0.0" vertical-offset="508" max-vertical-offset="1230">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="9" selection-start="2010" selection-end="2010" vertical-scroll-proportion="0.8679245" vertical-offset="375" max-vertical-offset="1170">
+        <state line="75" column="10" selection-start="2012" selection-end="2012" vertical-scroll-proportion="0.7597254" vertical-offset="733" max-vertical-offset="1170">
           <folding />
         </state>
       </provider>
