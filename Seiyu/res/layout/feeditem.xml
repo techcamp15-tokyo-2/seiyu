@@ -19,16 +19,18 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/bnr_accum"
         /> 
         <TextView 
             android:id="@+id/contentText"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_gravity="center_horizontal"
+            android:background="#f08080"
             android:text="楊旭"
+            android:gravity="center"
             android:textSize="13sp"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
             />
         <TextView 
@@ -37,6 +39,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_gravity="center_horizontal"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/gheader_logo"
             android:text="2013年11月11日"
             android:textSize="12sp"
             />

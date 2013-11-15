@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.seiyu.R;
 import com.seiyu.modal.BlogItem;
@@ -49,6 +50,11 @@ public class BlogItemAdapter extends BaseAdapter{
 			LayoutInflater layoutInflater = LayoutInflater.from(context);
 			rowView = layoutInflater.inflate(R.layout.blogitem, null);
 			rowViews.put(position, rowView);
+			BlogItem item = (BlogItem) getItem(position);
+			TextView date = (TextView)rowView.findViewById(R.id.date);
+			TextView title = (TextView)rowView.findViewById(R.id.content);
+			date.setText(item.getTimeSmap());
+			title.setText(item.getBlogName());
 		}
 		return rowView;
 		

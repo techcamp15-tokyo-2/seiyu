@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/user"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/orange_btn"
+        android:text="楊　旭"
+        android:gravity="left"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp" />
+
+    <com.seiyu.gridView.NoScrollGridView
+        android:id="@+id/gridView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="fill_vertical|fill_horizontal"
+        android:numColumns="2"
+        android:paddingTop="5dp"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="6dp"/>
+
+</LinearLayout>

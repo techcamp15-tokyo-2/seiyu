@@ -29,16 +29,17 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="2dp"
                 android:paddingLeft="10dp"
-                android:paddingTop="2dp"
-                android:text="2013/07/04 13:50" />
+                android:textColor="#FFFFFF"
+                android:paddingTop="2dp"/>
 
             <TextView
                 android:id="@+id/content"
-                android:layout_width="fill_parent"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
-                android:text="testtesttesttesttest"
-                android:textSize="18sp" />
+                android:singleLine="true"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <ImageView
@@ -48,7 +49,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:scaleType="matrix"
-            android:src="@drawable/mm_submenu" />
+            android:src="@drawable/blog" />
     </RelativeLayout>
 
 </LinearLayout>
