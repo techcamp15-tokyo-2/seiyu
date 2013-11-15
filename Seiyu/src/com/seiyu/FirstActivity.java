@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,8 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.seiyu.database.DBHelper;
 
 public class FirstActivity extends Activity {
 
@@ -27,6 +30,7 @@ public class FirstActivity extends Activity {
 	private int currIndex = 0;
 	private Button login_btn = null;
 	private Button regist_btn = null;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class FirstActivity extends Activity {
 	}
 
 	private void init() {
+		
 		login_btn = (Button)findViewById(R.id.login_btn);
 		login_btn.setOnClickListener(new OnClickListener() {
 			

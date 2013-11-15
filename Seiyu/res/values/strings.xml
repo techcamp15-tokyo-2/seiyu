@@ -4,5 +4,6 @@
     <string name="app_name">声優みよう</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="URL">http://172.19.210.156:8889</string>
 
 </resources>

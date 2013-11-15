@@ -2,19 +2,27 @@ package com.seiyu.modal;
 
 public class BlogItem {
 
-	private String title;
-	private String time;
-	public String getTitle() {
-		return title;
+	private String blogUrl;
+	private String blogName;
+	private String timeSmap;
+	public String getBlogUrl() {
+		return blogUrl;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setBlogUrl(String blogUrl) {
+		this.blogUrl = blogUrl;
 	}
-	public String getTime() {
-		return time;
+	public String getBlogName() {
+		return blogName;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setBlogName(String blogName) {
+		this.blogName = blogName;
 	}
+	public String getTimeSmap() {
+		return timeSmap;
+	}
+	public void setTimeSmap(String timeSmap) {
+		this.timeSmap = timeSmap;
+	}
+	
 	
 }

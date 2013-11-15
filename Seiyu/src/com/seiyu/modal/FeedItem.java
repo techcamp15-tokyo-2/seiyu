@@ -1,11 +1,18 @@
 package com.seiyu.modal;
 
-public class FeedItem {
+import java.io.Serializable;
 
+public class FeedItem implements Serializable{
+
+	
+	private static final long serialVersionUID = 4377564304887019262L;
 	private String imageUrl;
 	private String seiyuName;
 	private String seiyuId;
 	private String timeSmap;
+	private String blogUrl;
+	private String gender;
+	private String followed;
 	public String getImageUrl() {
 		return imageUrl;
 	}
@@ -29,6 +36,24 @@ public class FeedItem {
 	}
 	public void setTimeSmap(String timeSmap) {
 		this.timeSmap = timeSmap;
+	}
+	public String getBlogUrl() {
+		return blogUrl;
+	}
+	public void setBlogUrl(String blogUrl) {
+		this.blogUrl = blogUrl;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getFollowed() {
+		return followed;
+	}
+	public void setFollowed(String followed) {
+		this.followed = followed;
 	}
 	
 }
